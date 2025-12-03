@@ -8,25 +8,25 @@ import "aos/dist/aos.css";
 
 const testimonialsData = [
   {
-    img: "/images/testimonials/testimonials-1.jpg",
+    img: process.env.PUBLIC_URL + "/images/testimonials/testimonials-1.jpg",
     name: "Eng. Omar Al-Hassan",
     position: "Project Director – Infrastructure Development",
     text: "Aber Al-Khayal delivered our civil and infrastructure works with exceptional precision. Their engineering expertise and commitment to deadlines made them a reliable partner for our large-scale development project.",
   },
   {
-    img: "/images/testimonials/testimonials-2.jpg",
+    img: process.env.PUBLIC_URL + "/images/testimonials/testimonials-2.jpg",
     name: "Sarah Williams",
     position: "Facilities Manager – Commercial Buildings",
     text: "Their mechanical engineering team handled our HVAC and plumbing installations flawlessly. The quality of work and attention to detail exceeded our expectations.",
   },
   {
-    img: "/images/testimonials/testimonials-3.jpg",
+    img: process.env.PUBLIC_URL + "/images/testimonials/testimonials-3.jpg",
     name: "Ahmed Kareem",
     position: "Operations Manager – Industrial Sector",
     text: "The electrical engineering solutions provided by Aber Al-Khayal were highly efficient, safe, and reliable. Their team ensured smooth execution from design to implementation.",
   },
   {
-    img: "/images/testimonials/testimonials-4.jpg",
+    img: process.env.PUBLIC_URL + "/images/testimonials/testimonials-4.jpg",
     name: "Michael Anderson",
     position: "Independent Consultant – Construction",
     text: "Exceptional workmanship across all engineering disciplines. Their coordination, communication, and technical delivery make them one of the most dependable contractors in the region.",

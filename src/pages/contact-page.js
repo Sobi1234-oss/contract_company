@@ -8,7 +8,7 @@ return (
       <PageHeader 
   name="Contact Us" 
   link="Contact" 
-  bgImage="/images/page-title-bg.jpg" 
+   bgImage={process.env.PUBLIC_URL + "/images/page-title-bg.jpg"}
 />
       <Contact />
       

@@ -128,35 +128,35 @@ const Slider = ({ scrollToAppointment }) => {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src="/images/hero/hero-carousel-1.png"
+                src={process.env.PUBLIC_URL + "/images/hero/hero-carousel-1.png"}
                 className="d-block w-100"
                 alt="Engineering Solutions"
               />
             </div>
             <div className="carousel-item">
               <img
-                src="/images/hero/hero-carousel-6.jpg"
+                src={process.env.PUBLIC_URL +"/images/hero/hero-carousel-6.jpg"}
                 className="d-block w-100"
                 alt="Electrical Engineering"
               />
             </div>
             <div className="carousel-item">
               <img
-                src="/images/hero-carousel/hero-carousel-4.jpg"
+                src={process.env.PUBLIC_URL +"/images/hero-carousel/hero-carousel-4.jpg"}
                 className="d-block w-100"
                 alt="Mechanical Engineering"
               />
             </div>
             <div className="carousel-item">
               <img
-                src="/images/hero/hero-carousel-5.jpg"
+                src={process.env.PUBLIC_URL +"/images/hero/hero-carousel-5.jpg"}
                 className="d-block w-100"
                 alt="Civil Engineering"
               />
             </div>
             <div className="carousel-item">
               <img
-                src="/images/hero/hero-carousel-7.jpg"
+                src={process.env.PUBLIC_URL +"/images/hero/hero-carousel-7.jpg"}
                 className="d-block w-100"
                 alt="Quality Construction"
               />
@@ -198,6 +198,7 @@ const Slider = ({ scrollToAppointment }) => {
             to { opacity: 1; transform: translateY(0); }
           }
         `}</style>
+        
       </section>
     </>
   );

@@ -9,10 +9,26 @@ const Team = () => {
   }, []);
 
   const teamMembers = [
-    { name: "Sabir Ahmed", role: "Projects Director", img: "/images/team/team-5.jpg" },
-    { name: "Mohammad Asif Erubal", role: "Admin Manager", img: "/images/team/team-2.png" },
-    { name: "Muhammad Rizwan Khan", role: "HSE Manager", img: "/images/team/team-3.jpg" },
-    { name: "Vinu Viswanathan", role: "HR Executive", img: "/images/team/team-4.jpg" },
+    { 
+      name: "Sabir Ahmed", 
+      role: "Projects Director", 
+      img: process.env.PUBLIC_URL + "/images/team/team-5.jpg" 
+    },
+    { 
+      name: "Mohammad Asif Erubal", 
+      role: "Admin Manager", 
+      img: process.env.PUBLIC_URL + "/images/team/team-2.png" 
+    },
+    { 
+      name: "Muhammad Rizwan Khan", 
+      role: "HSE Manager", 
+      img: process.env.PUBLIC_URL + "/images/team/team-3.jpg" 
+    },
+    { 
+      name: "Vinu Viswanathan", 
+      role: "HR Executive", 
+      img: process.env.PUBLIC_URL + "/images/team/team-4.jpg" 
+    },
   ];
 
   return (
@@ -46,7 +62,7 @@ const Team = () => {
               <div className="card shadow-sm border-0 text-center team-card">
                 <div className="team-img-wrapper" style={{ height: "500px" }}>
                   <img
-                    src="/images/team/ceo.jpg"
+                    src={process.env.PUBLIC_URL + "/images/team/ceo.jpg"}
                     className="team-img"
                     alt="CEO"
                     style={{ height: "500px", objectFit: "cover", transition: "transform 0.5s" }}
@@ -92,10 +108,6 @@ const Team = () => {
           </div>
 
         </div>
-
-        {/* Mobile Responsive Tweaks */}
-        
-
       </div>
     </>
   );

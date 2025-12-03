@@ -13,7 +13,7 @@ const ServicesDetails = () => {
     {
       id: "civil",
       title: "Civil Engineering & Construction",
-      img: "/images/services/civil_details.png",
+      img: process.env.PUBLIC_URL +"/images/services/civil_details.png",
       text: `At Aber Al-Khayal General Contracting Company, we specialize in delivering high-quality civil engineering and construction services. With extensive experience across Saudi Arabia, we provide comprehensive solutions for residential, commercial, and industrial projects, ensuring structural integrity, safety, and timely completion.`,
       
       ourServices: [
@@ -32,7 +32,7 @@ const ServicesDetails = () => {
     {
       id: "mechanical",
       title: "Mechanical Engineering",
-      img: "/images/services/mechanic_details.png",
+      img:process.env.PUBLIC_URL + "/images/services/mechanic_details.png",
       text: `Aber Al-Khayal's Mechanical Engineering division provides expert solutions in HVAC systems, plumbing, piping, machinery installation, and industrial maintenance. Our team ensures high-performance, durable, and energy-efficient mechanical systems, delivering full project support from design to maintenance.`,
       
       ourServices: [
@@ -51,7 +51,7 @@ const ServicesDetails = () => {
     {
       id: "electrical",
       title: "Electrical Engineering",
-      img: "/images/services/electric_details.png",
+      img: process.env.PUBLIC_URL +"/images/services/electric_details.png",
       text: `Our Electrical Engineering services include full-spectrum solutions such as power distribution, lighting systems, automation, wiring, panel installation, and maintenance. We focus on safety, energy efficiency, and compliance while delivering smart and reliable electrical networks for all project types.`,
       
       ourServices: [

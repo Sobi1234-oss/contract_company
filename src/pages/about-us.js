@@ -8,7 +8,7 @@ const AboutUs = () => {
       <PageHeader
         name="About Us"
         link="About"
-        bgImage="/images/page-title-bg.jpg"
+        bgImage={process.env.PUBLIC_URL + "/images/page-title-bg.jpg"}
       />
 
       {/* about section start */}

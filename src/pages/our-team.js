@@ -24,7 +24,7 @@ const OurTeam = () => {
       <PageHeader 
         name="Our Team" 
         link="Team" 
-        bgImage="/images/page-title-bg.jpg" 
+        bgImage={process.env.PUBLIC_URL + "/images/page-title-bg.jpg"}
       />
 
       {/* Team Section */}

@@ -97,7 +97,7 @@ const AboutDetails = () => {
   <div className="image-container" data-aos="fade-left" style={{ marginTop: "-20px" }}>
     <div className="image-frame">
       <img 
-        src="/images/about_us.png" 
+        src={process.env.PUBLIC_URL+"/images/about_us.png" }
         alt="Al-Khayal Engineering Services" 
         className="main-image img-fluid left-rounded-image" 
         style={{ 

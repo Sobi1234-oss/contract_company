@@ -2,14 +2,14 @@ import React from "react";
 
 const OurClients = () => {
   const clients = [
-    { img: "/images/clients/client-1.png", delay: 100 },
-    { img: "/images/clients/client-2.png", delay: 150 },
-    { img: "/images/clients/client-3.png", delay: 200 },
-    { img: "/images/clients/client-4.png", delay: 250 },
-    { img: "/images/clients/client-5.png", delay: 300 },
-    { img: "/images/clients/client-6.png", delay: 350 },
-    { img: "/images/clients/client-7.png", delay: 400 },
-    { img: "/images/clients/client-8.png", delay: 450 },
+    { img: process.env.PUBLIC_URL +"/images/clients/client-1.png", delay: 100 },
+    { img: process.env.PUBLIC_URL +"/images/clients/client-2.png", delay: 150 },
+    { img:process.env.PUBLIC_URL + "/images/clients/client-3.png", delay: 200 },
+    { img: process.env.PUBLIC_URL +"/images/clients/client-4.png", delay: 250 },
+    { img: process.env.PUBLIC_URL +"/images/clients/client-5.png", delay: 300 },
+    { img: process.env.PUBLIC_URL +"/images/clients/client-6.png", delay: 350 },
+    { img:process.env.PUBLIC_URL + "/images/clients/client-7.png", delay: 400 },
+    { img: process.env.PUBLIC_URL +"/images/clients/client-8.png", delay: 450 },
   ];
 
   const whyChooseUs = [
@@ -142,7 +142,7 @@ const OurClients = () => {
               <div className="stats-box bg-dark bg-opacity-50 rounded-3 p-3 border border-orange border-opacity-25">
                 <div className="row text-center">
                   <div className="col-md-3 col-6 mb-2">
-                    <h4 className="fw-bold text-orange mb-1">25+</h4>
+                    <h4 className="fw-bold text-orange mb-1">15+</h4>
                     <p className="text-light mb-0 small">Years Experience</p>
                   </div>
                   <div className="col-md-3 col-6 mb-2">

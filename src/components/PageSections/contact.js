@@ -1,13 +1,14 @@
-// src/components/PageSections/contact.js
+/// src/components/PageSections/contact.js
 import React, { useEffect, useState } from "react";
 import "../../style_new.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { send } from "@emailjs/browser";
 
-const EMAILJS_SERVICE_ID = "service_zgpakd4";
-const EMAILJS_TEMPLATE_ID = "template_uuzoxq9";
-const EMAILJS_USER_ID = "467GkbkMgX0vaII31";
+const SERVICE_ID = "service_zgpakd4";
+const TEMPLATE_USER = "template_uuzoxq9";   // Auto reply to user
+const TEMPLATE_ADMIN = "template_6hi7u0j"; // Your admin template ID
+const PUBLIC_KEY = "467GkbkMgX0vaII31";
 
 const Contact = () => {
   useEffect(() => {
@@ -45,50 +46,25 @@ const Contact = () => {
     setStatus({ loading: true, success: null, msg: "Sending..." });
 
     try {
-      // 1️⃣ AUTO REPLY TO USER
+      // 1️⃣ Auto-Reply Email to USER
       const userParams = {
         to_email: form.email,
-        from_name: "Aber Al-Khayal Contracting Company", // sender name
+        name: form.name,
         subject: form.subject,
-        message: `Dear ${form.name},
-
-We’ve received your message: "${form.subject}".
-Our team will contact you within 1 business day.
-
-Best regards,
-Aber Al-Khayal Contracting Company
-Civil • Electrical • Mechanical Services`,
+        message: form.message,
       };
 
-      await send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        userParams,
-        EMAILJS_USER_ID
-      );
+      await send(SERVICE_ID, TEMPLATE_USER, userParams, PUBLIC_KEY);
 
-      // 2️⃣ SEND TO ADMIN
+      // 2️⃣ Admin Email
       const adminParams = {
-        to_email: "aberalkhayal@gmail.com",
-        from_name: form.name,
-        from_email: form.email,
-        subject: `New Inquiry - ${form.subject}`,
-        message: `New inquiry received from your website:
-
-Name: ${form.name}
-Email: ${form.email}
-Subject: ${form.subject}
-Message: ${form.message}
-
-— Aber Al-Khayal Website`,
+        name: form.name,
+        email: form.email,
+        subject: form.subject,
+        message: form.message,
       };
 
-      await send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        adminParams,
-        EMAILJS_USER_ID
-      );
+      await send(SERVICE_ID, TEMPLATE_ADMIN, adminParams, PUBLIC_KEY);
 
       setStatus({
         loading: false,

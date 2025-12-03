@@ -1,14 +1,15 @@
+// src/components/PageSections/Appointment.js
 import React, { useState } from "react";
-import '../../style_new.css';
+import "../../style_new.css";
 import { send } from "@emailjs/browser";
 
 // EmailJS Config
-const EMAILJS_SERVICE_ID = "service_zgpakd4";
-const EMAILJS_TEMPLATE_ID = "template_uuzoxq9";
-const EMAILJS_PUBLIC_KEY = "467GkbkMgX0vaII31";
+const SERVICE_ID = "service_zgpakd4";
+const TEMPLATE_USER = "template_uuzoxq9";     // Auto reply to user
+const TEMPLATE_ADMIN = "template_6hi7u0j";   // Admin email template
+const PUBLIC_KEY = "467GkbkMgX0vaII31";
 
 const Appointment = () => {
-
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -30,54 +31,38 @@ const Appointment = () => {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.mobile || !form.service || !form.message) {
-      setStatus({ loading: false, success: false, msg: "Please fill all fields." });
+      setStatus({
+        loading: false,
+        success: false,
+        msg: "Please fill all fields.",
+      });
       return;
     }
 
     setStatus({ loading: true, success: null, msg: "Sending..." });
 
     try {
-      // 1️⃣ Auto Email to User
+      // 1️⃣ Auto Email to USER
       const userParams = {
         to_email: form.email,
-        from_name: "Aber Al-Khayal Contracting Company",
-        subject: "Appointment Request Received",
-        message: `
-Dear ${form.name},
-
-Thank you for scheduling a consultation with us.
-Our engineering team will contact you within 24 hours.
-
-Service Type: ${form.service}
-Mobile: ${form.mobile}
-
-Best Regards,
-Aber Al-Khayal Contracting Company
-        `,
+        name: form.name,
+        service: form.service,
+        mobile: form.mobile,
+        message: form.message,
       };
 
-      await send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, userParams, EMAILJS_PUBLIC_KEY);
+      await send(SERVICE_ID, TEMPLATE_USER, userParams, PUBLIC_KEY);
 
-      // 2️⃣ Email to Admin
+      // 2️⃣ Email to ADMIN
       const adminParams = {
-        to_email: "aberalkhayal@gmail.com",
-        from_name: form.name,
-        from_email: form.email,
-        subject: `New Appointment - ${form.service}`,
-        message: `
-New appointment request received:
-
-Name: ${form.name}
-Email: ${form.email}
-Mobile: ${form.mobile}
-Service: ${form.service}
-Message: ${form.message}
-
-— Aber Al-Khayal Website
-        `,
+        name: form.name,
+        email: form.email,
+        mobile: form.mobile,
+        service: form.service,
+        message: form.message,
       };
 
-      await send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, adminParams, EMAILJS_PUBLIC_KEY);
+      await send(SERVICE_ID, TEMPLATE_ADMIN, adminParams, PUBLIC_KEY);
 
       setStatus({
         loading: false,
@@ -85,7 +70,13 @@ Message: ${form.message}
         msg: "Appointment request sent successfully!",
       });
 
-      setForm({ name: "", email: "", mobile: "", service: "", message: "" });
+      setForm({
+        name: "",
+        email: "",
+        mobile: "",
+        service: "",
+        message: "",
+      });
 
     } catch (err) {
       console.error("EmailJS Error:", err);
@@ -99,13 +90,14 @@ Message: ${form.message}
 
   return (
     <>
-      <div className="container-xxl py-5"
-        style={{ background: "linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)" }}>
+      <div
+        className="container-xxl py-5"
+        style={{ background: "linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)" }}
+      >
         <div className="container">
           <div className="row g-5 align-items-center">
-
             {/* Left Content */}
-            <div className="col-lg-5 col-md-6" data-aos="fade-right" data-aos-delay="100">
+            <div className="col-lg-5 col-md-6">
               <div className="border-start border-5 border-primary ps-4 mb-5">
                 <span className="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2 rounded-pill">
                   Get In Touch
@@ -134,9 +126,8 @@ Message: ${form.message}
             </div>
 
             {/* Right Form */}
-            <div className="col-lg-7 col-md-6" data-aos="fade-left" data-aos-delay="200">
+            <div className="col-lg-7 col-md-6">
               <div className="form-card bg-white rounded-4 shadow-lg p-4 p-md-5">
-
                 <div className="text-center mb-4">
                   <div className="form-icon bg-primary bg-opacity-10 rounded-3 p-3 d-inline-flex mb-3">
                     <i className="fa fa-calendar-check fa-2x text-primary"></i>
@@ -150,7 +141,6 @@ Message: ${form.message}
                 {/* FORM */}
                 <form onSubmit={handleSubmit}>
                   <div className="row g-3">
-
                     <div className="col-sm-6">
                       <div className="form-floating">
                         <input
@@ -160,9 +150,9 @@ Message: ${form.message}
                           placeholder="Your Name"
                           value={form.name}
                           onChange={handleChange}
-                          style={{ backgroundColor: '#f8f9fa', height: '60px' }}
+                          style={{ backgroundColor: "#f8f9fa", height: "60px" }}
                         />
-                        <label><i className="fa fa-user me-2"></i>Your Name</label>
+                        <label>Your Name</label>
                       </div>
                     </div>
 
@@ -175,9 +165,9 @@ Message: ${form.message}
                           placeholder="Your Email"
                           value={form.email}
                           onChange={handleChange}
-                          style={{ backgroundColor: '#f8f9fa', height: '60px' }}
+                          style={{ backgroundColor: "#f8f9fa", height: "60px" }}
                         />
-                        <label><i className="fa fa-envelope me-2"></i>Your Email</label>
+                        <label>Your Email</label>
                       </div>
                     </div>
 
@@ -190,9 +180,9 @@ Message: ${form.message}
                           placeholder="Your Mobile"
                           value={form.mobile}
                           onChange={handleChange}
-                          style={{ backgroundColor: '#f8f9fa', height: '60px' }}
+                          style={{ backgroundColor: "#f8f9fa", height: "60px" }}
                         />
-                        <label><i className="fa fa-phone me-2"></i>Your Mobile</label>
+                        <label>Your Mobile</label>
                       </div>
                     </div>
 
@@ -203,7 +193,7 @@ Message: ${form.message}
                           className="form-control border-0 shadow-sm"
                           value={form.service}
                           onChange={handleChange}
-                          style={{ backgroundColor: '#f8f9fa', height: '60px' }}
+                          style={{ backgroundColor: "#f8f9fa", height: "60px" }}
                         >
                           <option value="">Select Service Type</option>
                           <option value="Civil Engineering">Civil Engineering</option>
@@ -211,7 +201,7 @@ Message: ${form.message}
                           <option value="Mechanical Engineering">Mechanical Engineering</option>
                           <option value="General Consultation">General Consultation</option>
                         </select>
-                        <label><i className="fa fa-cogs me-2"></i>Service Type</label>
+                        <label>Service Type</label>
                       </div>
                     </div>
 
@@ -220,12 +210,16 @@ Message: ${form.message}
                         <textarea
                           name="message"
                           className="form-control border-0 shadow-sm"
-                          placeholder="Message"
+                          placeholder="Project Details"
                           value={form.message}
                           onChange={handleChange}
-                          style={{ height: '120px', backgroundColor: '#f8f9fa', resize: 'none' }}
+                          style={{
+                            height: "120px",
+                            backgroundColor: "#f8f9fa",
+                            resize: "none",
+                          }}
                         ></textarea>
-                        <label><i className="fa fa-comment me-2"></i>Project Details</label>
+                        <label>Project Details</label>
                       </div>
                     </div>
 
@@ -234,8 +228,8 @@ Message: ${form.message}
                         type="submit"
                         className="btn btn-primary w-100 py-3 fw-bold rounded-pill border-0"
                         style={{
-                          background: 'linear-gradient(135deg, #007bff, #0056b3)',
-                          fontSize: '1.1rem'
+                          background: "linear-gradient(135deg, #007bff, #0056b3)",
+                          fontSize: "1.1rem",
                         }}
                         disabled={status.loading}
                       >
@@ -245,7 +239,9 @@ Message: ${form.message}
 
                     {status.msg && (
                       <div className="col-12 text-center mt-3">
-                        <strong style={{ color: status.success ? "green" : "red" }}>
+                        <strong
+                          style={{ color: status.success ? "green" : "red" }}
+                        >
                           {status.msg}
                         </strong>
                       </div>

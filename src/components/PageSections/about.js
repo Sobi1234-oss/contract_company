@@ -161,7 +161,7 @@ const About = () => {
               <div className="image-wrapper position-relative">
                 <div className="image-frame overflow-hidden rounded-4 shadow-lg">
                   <img
-                    src="/images/about-2.jpg"
+                    src={process.env.PUBLIC_URL + "/images/about-2.jpg"}
                     alt="Al-Khayal Engineering Services"
                     className="img-fluid main-image rounded-4"
                     style={{ height: "450px", objectFit: "cover" }}

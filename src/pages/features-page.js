@@ -9,7 +9,7 @@ return (
       <PageHeader 
   name="Our Clients" 
   link="clients" 
-  bgImage="/images/page-title-bg.jpg" 
+   bgImage={process.env.PUBLIC_URL + "/images/page-title-bg.jpg"}
 />
 
       {/* features section start */}
