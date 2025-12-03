@@ -1,23 +1,26 @@
 import React from "react";
-import PageHeader from '../components/PageHeader';
-import About from '../components/PageSections/about.js';
-import Team from '../components/PageSections/team.js';
+import PageHeader from "../components/PageHeader";
+
+import About_details from "../components/PageSections/about_details.js";
 const AboutUs = () => {
   return (
     <>
-      <PageHeader name="About Us" link="about-us" />
-
+      <PageHeader
+        name="About Us"
+        link="About"
+        bgImage="/images/page-title-bg.jpg"
+      />
 
       {/* about section start */}
-        <About />
+
       {/* about section end */}
 
-
+      {<About_details />}
       {/* team section start */}
-        <Team />
+
       {/* team section end */}
     </>
   );
 };
-  
+
 export default AboutUs;

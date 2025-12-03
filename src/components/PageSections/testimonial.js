@@ -1,89 +1,115 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Swiper, { Autoplay, Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import "../../style_new.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-import '../../style_new.css';
+const testimonialsData = [
+  {
+    img: "/images/testimonials/testimonials-1.jpg",
+    name: "Eng. Omar Al-Hassan",
+    position: "Project Director – Infrastructure Development",
+    text: "Aber Al-Khayal delivered our civil and infrastructure works with exceptional precision. Their engineering expertise and commitment to deadlines made them a reliable partner for our large-scale development project.",
+  },
+  {
+    img: "/images/testimonials/testimonials-2.jpg",
+    name: "Sarah Williams",
+    position: "Facilities Manager – Commercial Buildings",
+    text: "Their mechanical engineering team handled our HVAC and plumbing installations flawlessly. The quality of work and attention to detail exceeded our expectations.",
+  },
+  {
+    img: "/images/testimonials/testimonials-3.jpg",
+    name: "Ahmed Kareem",
+    position: "Operations Manager – Industrial Sector",
+    text: "The electrical engineering solutions provided by Aber Al-Khayal were highly efficient, safe, and reliable. Their team ensured smooth execution from design to implementation.",
+  },
+  {
+    img: "/images/testimonials/testimonials-4.jpg",
+    name: "Michael Anderson",
+    position: "Independent Consultant – Construction",
+    text: "Exceptional workmanship across all engineering disciplines. Their coordination, communication, and technical delivery make them one of the most dependable contractors in the region.",
+  },
+];
 
 const Testimonial = () => {
-  return (
-    <>
-      {/* testimonial section start */}
+  useEffect(() => {
+    AOS.init({ duration: 1200 });
 
-      <div class="container-xxl py-5">
-            <div class="container">
-              <div class="row g-5">
-                <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                  <div class="border-start border-5 border-primary ps-4 mb-5">
-                    <h6 class="text-body text-uppercase mb-2">Testimonial</h6>
-                    <h1 class="display-6 mb-0">What Our Happy Clients Say!</h1>
-                  </div>
-                  <p class="mb-4">
-                    Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat
-                    ipsum et lorem et sit, sed stet lorem sit clita duo justo magna
-                    dolore erat amet
-                  </p>
-                  <div class="row g-4">
-                    <div class="col-sm-6">
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fa fa-users fa-2x text-primary flex-shrink-0"></i>
-                        <h1 class="ms-3 mb-0">123+</h1>
-                      </div>
-                      <h5 class="mb-0">Happy Clients</h5>
+    new Swiper(".testimonial-swiper", {
+      modules: [Autoplay, Pagination],
+      loop: true,
+      speed: 600,
+      autoplay: { delay: 5000 },
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        768: { slidesPerView: 1 },
+        1200: { slidesPerView: 2, spaceBetween: 30 },
+      },
+    });
+  }, []);
+
+  return (
+    <section
+      id="testimonials"
+      className="testimonials section py-5"
+      style={{ backgroundColor: "#E6E6E6" }} // light silver
+    >
+      <div className="container section-title text-center" data-aos="fade-up">
+        <h2 style={{ fontSize: "28px" }}>Testimonials</h2>
+        <p style={{ fontSize: "16px" }}>
+          What our clients say about our engineering excellence
+        </p>
+      </div>
+
+      <div className="container" data-aos="fade-up" data-aos-delay="100">
+        <div className="swiper testimonial-swiper">
+          <div className="swiper-wrapper">
+            {testimonialsData.map((item, index) => (
+              <div className="swiper-slide" key={index}>
+                <div className="testimonial-wrap py-3">
+                  <div className="testimonial-item p-4 text-center">
+                    <img
+                      src={item.img}
+                      className="testimonial-img mb-3"
+                      alt={item.name}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        margin: "0 auto",
+                      }}
+                    />
+                    <h3 style={{ fontSize: "20px", marginBottom: "5px" }}>{item.name}</h3>
+                    <h4 style={{ fontSize: "16px", fontWeight: "400", marginBottom: "10px" }}>{item.position}</h4>
+                    <div className="stars mb-2" style={{ fontSize: "16px", color: "#FFA500" }}>
+                      {[...Array(5)].map((_, i) => (
+                        <i key={i} className="bi bi-star-fill"></i>
+                      ))}
                     </div>
-                    <div class="col-sm-6">
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fa fa-check fa-2x text-primary flex-shrink-0"></i>
-                        <h1 class="ms-3 mb-0">123+</h1>
-                      </div>
-                      <h5 class="mb-0">Projects Done</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
-                  <div class="owl-carousel testimonial-carousel">
-                    <div class="testimonial-item">
-                      <img
-                        class="img-fluid mb-4"
-                        src="./images/testimonial-1.jpg"
-                        alt=""
-                      />
-                      <p class="fs-5">
-                        Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                        labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                        et labore et tempor diam tempor erat.
-                      </p>
-                      <div
-                        class="bg-primary mb-3"
-                        style={{width: '60px', height: '5px'}}
-                      ></div>
-                      <h5>Client Name</h5>
-                      <span>Profession</span>
-                    </div>
-                    <div class="testimonial-item">
-                      <img
-                        class="img-fluid mb-4"
-                        src="./images/testimonial-2.jpg"
-                        alt=""
-                      />
-                      <p class="fs-5">
-                        Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                        labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                        et labore et tempor diam tempor erat.
-                      </p>
-                      <div
-                        class="bg-primary mb-3"
-                        style={{width: '60px', height: '5px'}}
-                      ></div>
-                      <h5>Client Name</h5>
-                      <span>Profession</span>
-                    </div>
+                    <p style={{ fontSize: "15px", lineHeight: "1.5" }}>
+                      <i className="bi bi-quote quote-icon-left"></i>
+                      <span>{item.text}</span>
+                      <i className="bi bi-quote quote-icon-right"></i>
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
 
-          {/* testimonial section end */}
-    </>
+          <div className="swiper-pagination mt-3"></div>
+        </div>
+      </div>
+    </section>
   );
 };
-  
+
 export default Testimonial;

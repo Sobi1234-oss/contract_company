@@ -1,0 +1,144 @@
+/* NAVBAR MAIN CONTAINER */
+.main-navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 50px;
+  background-color: transparent;
+  transition: all 0.35s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* NAVBAR AFTER SCROLL */
+.main-navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  padding: 8px 50px;
+}
+
+/* LOGO WRAPPER */
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* LOGO IMAGE */
+.site-logo {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  margin-left: 10px;
+  transition: 0.3s ease;
+}
+
+/* SCROLLED LOGO — Smaller */
+.main-navbar.scrolled .site-logo {
+  height: 95px;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  transition: all 0.35s ease;
+}
+
+.nav-links .custom-link {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.nav-links .custom-link:hover,
+.nav-links .custom-link.active {
+  color: #FDA12B;
+}
+
+/* HAMBURGER MENU (MOBILE) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 0.4s;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* MOBILE NAV */
+.nav-links.active {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  background-color: rgba(24, 35, 51, 0.97);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 0;
+  z-index: 1000;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 992px) {
+
+  .main-navbar {
+    padding: 10px 20px;
+  }
+
+  .site-logo {
+    height: 80px !important; 
+    margin-left: 0 !important;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: rgba(24, 35, 51, 0.97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: all 0.4s ease;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* MAKE MOBILE MENU SCROLLABLE IF CONTENT EXCEEDS HEIGHT */
+.nav-links.active {
+  overflow-y: auto;
+}

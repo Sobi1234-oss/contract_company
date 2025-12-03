@@ -96,29 +96,9 @@
     margin-left: 8px;
 }
 
-@media (max-width: 991.98px) {
-    .navbar .navbar-nav .nav-link  {
-        margin-left: 0;
-        padding: 10px 0;
-    }
 
-    .navbar .navbar-nav {
-        margin-top: 25px;
-        border-top: 1px solid #EEEEEE;
-    }
-}
 
-@media (min-width: 992px) {
-    .navbar .nav-item .dropdown-menu {
-        display: block;
-        border: none;
-        margin-top: 0;
-        top: 150%;
-        right: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: .5s;
-    }
+
 
     .navbar .nav-item:hover .dropdown-menu {
         top: 100%;
@@ -126,7 +106,7 @@
         transition: .5s;
         opacity: 1;
     }
-}
+
 
 
 /*** Header ***/
@@ -138,10 +118,25 @@
     display: flex;
     align-items: center;
     text-align: start;
-    background: rgba(0, 0, 0, .65);
+    background: rgba(0, 0, 0, 0.40);
     z-index: 1;
 }
+.carousel-item {
+  position: relative;
+}
 
+.carousel-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.40); /* Adjust opacity as needed */
+  z-index: 2;
+}
+
+.carousel-item img {
+  position: relative;
+  z-index: 1;
+}
 .carousel-control-prev,
 .carousel-control-next {
     width: 15%;
@@ -354,4 +349,310 @@
 
 .footer .copyright a:hover {
     color: var(--primary);
+}
+/* reduce page header height */
+.small-header {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
+/* reduce title size */
+.small-header h1 {
+  font-size: 2.5rem !important;
+}
+
+/* reduce breadcrumb spacing */
+.small-header nav {
+  margin-top: 5px !important;
+}
+
+/* Fullscreen Hero */
+.hero {
+  height: 110vh; /* Bigger height */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Text section */
+.hero .info {
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+  top: 28%;
+  color: white; /* All text white */
+}
+
+/* Title styling */
+/* Title styling — smaller size */
+
+/* Move welcome text down */
+.hero-title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 40px; /* move text down */
+  color: #fff;
+}
+
+/* Orange line */
+.hero-line {
+  width: 120px;
+  height: 4px;
+  background: #ff7f00; /* orange */
+  margin: 15px auto 25px auto; /* spacing above & below */
+  border-radius: 5px;
+}
+
+/* Hero paragraph text */
+.hero-text {
+  color: #f0f0f0;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.hero-title span {
+  color: #fff;
+  font-weight: 800;
+}
+
+/* Paragraph — bigger + better spacing */
+
+
+/* Extra line under paragraph */
+.hero-subtext {
+  font-size: 20px;
+  color: #dcdcdc;
+  margin-top: 10px;
+}
+
+
+/* Slider Images */
+.hero img {
+  width: 100%;
+  height: 110vh;
+  object-fit: cover;
+}
+
+/* Dark Overlay Behind Text */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110vh;
+  background: rgba(0, 0, 0, 0.55); /* Darker for clear text */
+  z-index: 5;
+}
+
+/* Button */
+.btn-get-started {
+  display: inline-block;
+  margin-top: 20px;
+  background: transparent;
+  color: #d68a18;
+  padding: 8px 45px;        /* ← increased width ONLY */
+  border-radius: 40px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid #d68a18;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-get-started:hover {
+  background: #d68a18;
+  color: #fff;
+  border-color: #d68a18;
+}
+/* FIX Bootstrap Next/Prev Button Size */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 45px !important;
+  height: 45px !important;
+  background-size: 100% 100% !important;
+  filter: invert(1); /* White icons */
+}
+
+/* Make Buttons Clickable Above Overlay */
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 20 !important;
+}
+.fact-img-box {
+  width: 500px;
+  height: 350px;
+  overflow: hidden;
+}
+
+.fact-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.service-hover {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.service-hover img {
+  transition: transform 0.4s ease-in-out;
+}
+
+.service-hover:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.service-hover:hover img {
+  transform: scale(1.08);
+}
+
+/* Animation on scroll */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.9s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Team Section Background */
+.team-section {
+  background: #f2f2f2; /* soft silver */
+}
+
+/* Image Wrapper (for zoom) */
+.team-img-wrapper {
+  overflow: hidden;
+  height: 280px;
+}
+
+.team-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.6s ease;
+  cursor: pointer;
+}
+
+/* Zoom Hover Effect */
+.team-img-wrapper:hover img {
+  transform: scale(1.12);
+}
+
+/* CEO Image Bigger */
+.card .team-img {
+  height: 420px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Card Styling */
+.team-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Mobile Responsive Fix */
+@media (max-width: 576px) {
+  .team-img-wrapper {
+    height: 240px;
+  }
+  .card .team-img {
+    height: 300px;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+  .hero {
+    height: 90vh; /* smaller for tablets */
+  }
+  .hero img {
+    height: 90vh; /* match hero */
+  }
+  .hero-overlay {
+    height: 90vh;
+  }
+  .hero .info {
+    top: 25%; /* adjust text position */
+    padding: 0 20px;
+  }
+  .hero-title {
+    font-size: 32px; /* smaller title */
+  }
+  .hero-text {
+    font-size: 16px; /* smaller paragraph */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    height: 80vh; /* mobile height */
+  }
+  .hero img {
+    height: 80vh;
+  }
+  .hero-overlay {
+    height: 80vh;
+  }
+  .hero .info {
+    top: 20%; /* move text higher for small screens */
+    padding: 0 15px;
+  }
+  .hero-title {
+    font-size: 24px; /* mobile title */
+  }
+  .hero-text {
+    font-size: 14px; /* mobile paragraph */
+  }
+}
+/* Tablet / small screens */
+@media (max-width: 992px) {
+  .btn-get-started {
+    padding: 10px 28px;
+    font-size: 16px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 576px) {
+  .btn-get-started {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+/* Contact Items Clickable + Hover */
+.footer-contact-item {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: #ccc; /* default text color */
+}
+
+/* Default icon color: Orange */
+.footer-contact-item i {
+  color: #d68a18;
+  transition: color 0.3s ease;
+}
+
+/* Hover Effect: Text + Icon Turn Brighter Orange */
+.footer-contact-item:hover {
+  color: #d68a18 !important;
+}
+
+.footer-contact-item:hover i {
+  color: #ff9f1c !important; /* brighter orange */
+}
+h1, h2, h3, h4, h5, h6,
+p, a, button, span, li, input, textarea {
+    font-family: 'Raleway', sans-serif !important;
 }

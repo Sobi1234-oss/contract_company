@@ -1,35 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import '../../style_new.css';
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+
+import logo from "../../images/logo.png";  // ✅ Correct path
+import "./Navbar.css";
+
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) setScrolled(true);
+      else setScrolled(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    
-    <>
-      <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center">
-          <h1 class="m-0">
-            <i class="fa fa-building text-primary me-3"></i>APEX
-          </h1>
-        </a>
-        <button
-          type="button"
-          class="navbar-toggler"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <div class="navbar-nav ms-auto py-3 py-lg-0">
-            <Link to="/" class="nav-item nav-link active">Home</Link>
-            <Link to="/about-us" class="nav-item nav-link">About</Link>
-            <Link to="/our-services" class="nav-item nav-link">Our Services</Link>
-            <Link to="/features-page" class="nav-item nav-link">Features</Link>
-            <Link to="/contact-page"class="nav-item nav-link">Contact Us</Link>
-          </div>
-        </div>
-      </nav>
-    </>
+    <nav className={`main-navbar ${scrolled ? "scrolled" : ""}`}>
+      
+      {/* Logo */}
+      <NavLink to="/" className="logo-wrapper">
+  <img src={logo} alt="Logo" className="site-logo" />
+</NavLink>
+
+      {/* Hamburger */}
+      <div className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* Menu Links */}
+      <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+        <NavLink to="/" className="custom-link" onClick={closeMenu}>Home</NavLink>
+        <NavLink to="/about-us" className="custom-link" onClick={closeMenu}>About</NavLink>
+        <NavLink to="/our-services" className="custom-link" onClick={closeMenu}>Services</NavLink>
+        <NavLink to="/clients-page" className="custom-link" onClick={closeMenu}>Our Clients</NavLink>
+        <NavLink to="/our-team" className="custom-link" onClick={closeMenu}>Our Team</NavLink>
+        <NavLink to="/contact-page" className="custom-link" onClick={closeMenu}>Contact</NavLink>
+      </div>
+    </nav>
   );
 };
-  
+
 export default Navbar;

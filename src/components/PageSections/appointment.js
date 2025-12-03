@@ -1,99 +1,266 @@
-import React from "react";
-
+import React, { useState } from "react";
 import '../../style_new.css';
+import { send } from "@emailjs/browser";
+
+// EmailJS Config
+const EMAILJS_SERVICE_ID = "service_zgpakd4";
+const EMAILJS_TEMPLATE_ID = "template_uuzoxq9";
+const EMAILJS_PUBLIC_KEY = "467GkbkMgX0vaII31";
 
 const Appointment = () => {
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    service: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState({
+    loading: false,
+    success: null,
+    msg: "",
+  });
+
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!form.name || !form.email || !form.mobile || !form.service || !form.message) {
+      setStatus({ loading: false, success: false, msg: "Please fill all fields." });
+      return;
+    }
+
+    setStatus({ loading: true, success: null, msg: "Sending..." });
+
+    try {
+      // 1️⃣ Auto Email to User
+      const userParams = {
+        to_email: form.email,
+        from_name: "Aber Al-Khayal Contracting Company",
+        subject: "Appointment Request Received",
+        message: `
+Dear ${form.name},
+
+Thank you for scheduling a consultation with us.
+Our engineering team will contact you within 24 hours.
+
+Service Type: ${form.service}
+Mobile: ${form.mobile}
+
+Best Regards,
+Aber Al-Khayal Contracting Company
+        `,
+      };
+
+      await send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, userParams, EMAILJS_PUBLIC_KEY);
+
+      // 2️⃣ Email to Admin
+      const adminParams = {
+        to_email: "aberalkhayal@gmail.com",
+        from_name: form.name,
+        from_email: form.email,
+        subject: `New Appointment - ${form.service}`,
+        message: `
+New appointment request received:
+
+Name: ${form.name}
+Email: ${form.email}
+Mobile: ${form.mobile}
+Service: ${form.service}
+Message: ${form.message}
+
+— Aber Al-Khayal Website
+        `,
+      };
+
+      await send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, adminParams, EMAILJS_PUBLIC_KEY);
+
+      setStatus({
+        loading: false,
+        success: true,
+        msg: "Appointment request sent successfully!",
+      });
+
+      setForm({ name: "", email: "", mobile: "", service: "", message: "" });
+
+    } catch (err) {
+      console.error("EmailJS Error:", err);
+      setStatus({
+        loading: false,
+        success: false,
+        msg: "Failed to send. Try again later.",
+      });
+    }
+  };
+
   return (
     <>
-      {/* appointment section start */}
-      <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container py-5">
-              <div class="row g-5">
-                <div class="col-lg-5 col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                  <div class="border-start border-5 border-primary ps-4 mb-5">
-                    <h6 class="text-white text-uppercase mb-2">Appointment</h6>
-                    <h1 class="display-6 text-white mb-0">
-                      A Company Involved In Service And Maintenance
-                    </h1>
-                  </div>
-                  <p class="text-white mb-0">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
-                    diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet
-                    lorem sit clita duo justo magna dolore erat amet
-                  </p>
+      <div className="container-xxl py-5"
+        style={{ background: "linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)" }}>
+        <div className="container">
+          <div className="row g-5 align-items-center">
+
+            {/* Left Content */}
+            <div className="col-lg-5 col-md-6" data-aos="fade-right" data-aos-delay="100">
+              <div className="border-start border-5 border-primary ps-4 mb-5">
+                <span className="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2 rounded-pill">
+                  Get In Touch
+                </span>
+                <h1 className="display-6 fw-bold mb-0 text-dark">
+                  Schedule Your <span className="text-primary">Project</span>
+                </h1>
+              </div>
+
+              <p className="text-muted lead mb-4">
+                As a leading contracting company, Aber Al-Khayal specializes in
+                <strong> Civil, Electrical, and Mechanical Engineering</strong> services.
+              </p>
+
+              <div className="contact-info mt-4 p-4 bg-white rounded-4 shadow-sm">
+                <h6 className="fw-bold text-dark mb-3">Quick Contact</h6>
+                <div className="d-flex align-items-center mb-2">
+                  <i className="fa fa-phone text-primary me-3"></i>
+                  <span className="text-muted">+0554625112</span>
                 </div>
-                <div class="col-lg-7 col-md-6 wow fadeIn" data-wow-delay="0.5s">
-                  <form>
-                    <div class="row g-3">
-                      <div class="col-sm-6">
-                        <div class="form-floating">
-                          <input
-                            type="text"
-                            class="form-control bg-dark border-0"
-                            id="gname"
-                            placeholder="Gurdian Name"
-                          />
-                          <label for="gname">Your Name</label>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-floating">
-                          <input
-                            type="email"
-                            class="form-control bg-dark border-0"
-                            id="gmail"
-                            placeholder="Gurdian Email"
-                          />
-                          <label for="gmail">Your Email</label>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-floating">
-                          <input
-                            type="text"
-                            class="form-control bg-dark border-0"
-                            id="cname"
-                            placeholder="Child Name"
-                          />
-                          <label for="cname">Your Mobile</label>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-floating">
-                          <input
-                            type="text"
-                            class="form-control bg-dark border-0"
-                            id="cage"
-                            placeholder="Child Age"
-                          />
-                          <label for="cage">Service Type</label>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="form-floating">
-                          <textarea
-                            class="form-control bg-dark border-0"
-                            placeholder="Leave a message here"
-                            id="message"
-                            style={{height: '100px'}}
-                          ></textarea>
-                          <label for="message">Message</label>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <button class="btn btn-primary w-100 py-3" type="submit">
-                          Get Appointment
-                        </button>
-                      </div>
-                    </div>
-                  </form>
+                <div className="d-flex align-items-center">
+                  <i className="fa fa-envelope text-primary me-3"></i>
+                  <span className="text-muted">aberalkhayal@gmail.com</span>
                 </div>
               </div>
             </div>
+
+            {/* Right Form */}
+            <div className="col-lg-7 col-md-6" data-aos="fade-left" data-aos-delay="200">
+              <div className="form-card bg-white rounded-4 shadow-lg p-4 p-md-5">
+
+                <div className="text-center mb-4">
+                  <div className="form-icon bg-primary bg-opacity-10 rounded-3 p-3 d-inline-flex mb-3">
+                    <i className="fa fa-calendar-check fa-2x text-primary"></i>
+                  </div>
+                  <h4 className="fw-bold text-dark mb-2">Book Your Consultation</h4>
+                  <p className="text-muted mb-0">
+                    Fill the form and our experts will contact you within 24 hours
+                  </p>
+                </div>
+
+                {/* FORM */}
+                <form onSubmit={handleSubmit}>
+                  <div className="row g-3">
+
+                    <div className="col-sm-6">
+                      <div className="form-floating">
+                        <input
+                          name="name"
+                          type="text"
+                          className="form-control border-0 shadow-sm"
+                          placeholder="Your Name"
+                          value={form.name}
+                          onChange={handleChange}
+                          style={{ backgroundColor: '#f8f9fa', height: '60px' }}
+                        />
+                        <label><i className="fa fa-user me-2"></i>Your Name</label>
+                      </div>
+                    </div>
+
+                    <div className="col-sm-6">
+                      <div className="form-floating">
+                        <input
+                          name="email"
+                          type="email"
+                          className="form-control border-0 shadow-sm"
+                          placeholder="Your Email"
+                          value={form.email}
+                          onChange={handleChange}
+                          style={{ backgroundColor: '#f8f9fa', height: '60px' }}
+                        />
+                        <label><i className="fa fa-envelope me-2"></i>Your Email</label>
+                      </div>
+                    </div>
+
+                    <div className="col-sm-6">
+                      <div className="form-floating">
+                        <input
+                          name="mobile"
+                          type="text"
+                          className="form-control border-0 shadow-sm"
+                          placeholder="Your Mobile"
+                          value={form.mobile}
+                          onChange={handleChange}
+                          style={{ backgroundColor: '#f8f9fa', height: '60px' }}
+                        />
+                        <label><i className="fa fa-phone me-2"></i>Your Mobile</label>
+                      </div>
+                    </div>
+
+                    <div className="col-sm-6">
+                      <div className="form-floating">
+                        <select
+                          name="service"
+                          className="form-control border-0 shadow-sm"
+                          value={form.service}
+                          onChange={handleChange}
+                          style={{ backgroundColor: '#f8f9fa', height: '60px' }}
+                        >
+                          <option value="">Select Service Type</option>
+                          <option value="Civil Engineering">Civil Engineering</option>
+                          <option value="Electrical Engineering">Electrical Engineering</option>
+                          <option value="Mechanical Engineering">Mechanical Engineering</option>
+                          <option value="General Consultation">General Consultation</option>
+                        </select>
+                        <label><i className="fa fa-cogs me-2"></i>Service Type</label>
+                      </div>
+                    </div>
+
+                    <div className="col-12">
+                      <div className="form-floating">
+                        <textarea
+                          name="message"
+                          className="form-control border-0 shadow-sm"
+                          placeholder="Message"
+                          value={form.message}
+                          onChange={handleChange}
+                          style={{ height: '120px', backgroundColor: '#f8f9fa', resize: 'none' }}
+                        ></textarea>
+                        <label><i className="fa fa-comment me-2"></i>Project Details</label>
+                      </div>
+                    </div>
+
+                    <div className="col-12 mt-4">
+                      <button
+                        type="submit"
+                        className="btn btn-primary w-100 py-3 fw-bold rounded-pill border-0"
+                        style={{
+                          background: 'linear-gradient(135deg, #007bff, #0056b3)',
+                          fontSize: '1.1rem'
+                        }}
+                        disabled={status.loading}
+                      >
+                        {status.loading ? "Sending..." : "Schedule Appointment"}
+                      </button>
+                    </div>
+
+                    {status.msg && (
+                      <div className="col-12 text-center mt-3">
+                        <strong style={{ color: status.success ? "green" : "red" }}>
+                          {status.msg}
+                        </strong>
+                      </div>
+                    )}
+                  </div>
+                </form>
+
+              </div>
+            </div>
+
           </div>
-          {/* appointment section end */}
+        </div>
+      </div>
     </>
   );
 };
-  
+
 export default Appointment;

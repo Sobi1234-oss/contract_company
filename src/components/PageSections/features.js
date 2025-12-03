@@ -1,83 +1,131 @@
 import React from "react";
-
-import '../../style_new.css';
+import "../../style_new.css";
 
 const Features = () => {
+  const featuresData = [
+    {
+      icon: "fa-tachometer-alt",
+      title: "Precision Engineering",
+      description: "Utilizing cutting-edge technology and precision engineering methods to deliver projects with exceptional accuracy and structural integrity."
+    },
+    {
+      icon: "fa-shield-alt", 
+      title: "Quality Assurance",
+      description: "Rigorous quality control processes ensuring every project meets international standards and exceeds client expectations consistently."
+    },
+    {
+      icon: "fa-clock",
+      title: "Timely Delivery",
+      description: "Efficient project management and skilled workforce ensuring on-time completion without compromising quality standards and specifications."
+    },
+    {
+      icon: "fa-users",
+      title: "Expert Team", 
+      description: "Highly qualified engineers and technicians with extensive experience in civil, electrical, and mechanical engineering disciplines."
+    },
+    {
+      icon: "fa-cogs",
+      title: "Modern Technology",
+      description: "State-of-the-art equipment and innovative construction techniques for superior project outcomes, efficiency, and sustainability."
+    },
+    {
+      icon: "fa-handshake",
+      title: "Client Partnership", 
+      description: "Building lasting relationships through transparent communication, reliable service, and exceptional project delivery excellence."
+    }
+  ];
+
   return (
-    <>
-      {/* features section start */}
-      <div class="container-xxl py-5">
-            <div class="container">
-              <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                  <div class="border-start border-5 border-primary ps-4 mb-5">
-                    <h6 class="text-body text-uppercase mb-2">Why Choose Us!</h6>
-                    <h1 class="display-6 mb-0">
-                      Our Specialization And Company Features
-                    </h1>
-                  </div>
-                  <p class="mb-5">
-                    Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
-                    diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet
-                    lorem sit clita duo justo magna dolore erat amet
-                  </p>
-                  <div class="row gy-5 gx-4">
-                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                      <div class="d-flex align-items-center mb-3">
-                        <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                        <h6 class="mb-0">Large number of services provided</h6>
-                      </div>
-                      <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam</span >
-                    </div>
-                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
-                      <div class="d-flex align-items-center mb-3">
-                        <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3" ></i>
-                        <h6 class="mb-0">25+ years of professional experience</h6>
-                      </div>
-                      <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam</span>
-                    </div>
-                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                      <div class="d-flex align-items-center mb-3">
-                        <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                        <h6 class="mb-0">A large number of grateful customers</h6>
-                      </div>
-                      <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam</span>
-                    </div>
-                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
-                      <div class="d-flex align-items-center mb-3">
-                        <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                        <h6 class="mb-0">Always reliable and affordable prices</h6>
-                      </div>
-                      <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                  <div
-                    class="position-relative overflow-hidden ps-5 pt-5 h-100"
-                    style={{minHeight: '400px'}}>
-                    <img
-                      class="position-absolute w-100 h-100"
-                      src="./images/feature.jpg"
-                      alt=""
-                      style={{objectFit: 'cover'}}/>
-                    <div
-                      class="position-absolute top-0 start-0 bg-white pe-3 pb-3"
-                      style={{width: '200px', height: '200px'}}>
-                      <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
-                        <h1 class="text-white">25</h1>
-                        <h2 class="text-white">Years</h2>
-                        <h5 class="text-white mb-0">Experience</h5>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <section className="features-section py-5" style={{
+      background: "linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)",
+      paddingTop: "80px",
+      paddingBottom: "80px"
+    }}>
+      <div className="container">
+        {/* Left Aligned Header - Like Clients Section */}
+        <div className="row mb-5" data-aos="fade-up" style={{ marginTop: "30px" }}>
+          <div className="col-lg-8">
+            <div className="border-start border-5 border-primary ps-4">
+              <h6 className="text-body text-uppercase mb-2">Our Features</h6>
+              <h1 className="display-6 mb-0 fw-bold">Excellence by Aber Al-Khayal</h1>
+              <p className="text-muted mt-3">
+               We provide reliable, high-quality engineering solutions backed by expertise, innovation, and a commitment to excellence.
+              </p>
             </div>
           </div>
-          {/* features section end */}
-    </>
+        </div>
+
+        {/* Features Grid - 3 per row */}
+        <div className="row g-4 justify-content-center">
+          {featuresData.map((feature, index) => (
+            <div key={index} className="col-xl-4 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay={index * 100}>
+              <div className="feature-box h-100 p-4 rounded-4 shadow-sm border-0">
+                <div className="feature-icon mb-3">
+                  <div className="icon-wrapper bg-primary bg-opacity-10 rounded-3 p-3 d-inline-flex align-items-center justify-content-center">
+                    <i className={`fas ${feature.icon} text-primary`} style={{ fontSize: "1.5rem" }}></i>
+                  </div>
+                </div>
+                <h4 className="fw-bold text-dark mb-3">{feature.title}</h4>
+                <p className="text-muted mb-0" style={{ lineHeight: "1.6" }}>
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Custom Styles */}
+      <style>{`
+        .features-section {
+          font-family: 'Inter', sans-serif;
+        }
+
+        /* Feature Boxes */
+        .feature-box {
+          background: #ffffff;
+          transition: all 0.3s ease;
+          border: 1px solid rgba(0, 0, 0, 0.05);cursor: pointer;
+        }
+
+        .feature-box:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
+          border-color: rgba(0, 123, 255, 0.2);
+        }
+
+        .icon-wrapper {
+          transition: all 0.3s ease;
+        }
+
+        .feature-box:hover .icon-wrapper {
+          background: linear-gradient(45deg, #007bff, #0056b3) !important;
+          transform: scale(1.05);
+        }
+
+        .feature-box:hover .icon-wrapper i {
+          color: white !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .feature-box {
+            margin-bottom: 1.5rem;
+          }
+          
+          .display-6 {
+            font-size: 2rem;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .features-section {
+            padding: 60px 0 !important;
+          }
+        }
+      `}</style>
+    </section>
   );
 };
-  
+
 export default Features;

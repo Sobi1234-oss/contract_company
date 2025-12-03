@@ -1,55 +1,44 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Slider from '../components/PageSections/slider.js';
 import About from '../components/PageSections/about.js';
 import Facts from '../components/PageSections/facts.js';
 import Features from '../components/PageSections/features.js';
-import Services from '../components/PageSections/services.js';
 import Appointment from '../components/PageSections/appointment.js';
 import Team from '../components/PageSections/team.js';
 import Testimonial from '../components/PageSections/testimonial.js';
+import OurMission from '../components/PageSections/our_mission.js';   
+import OurClients from '../components/PageSections/our_clients.js';
+import HomeServices from '../components/PageSections/home_services.js';
+import Projects from '../components/PageSections/projects';
+import HSEQPolicy from '../components/PageSections/HSEQPolicy.js';
 const Home = () => {
-return (
-	<>
-      {/* slider start*/}
-        <Slider />
-      {/* slider end*/}
+  const appointmentRef = useRef(null);
 
+  const scrollToAppointment = () => {
+    appointmentRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-      {/* about section start*/}
-        <About />
-      {/* about section end*/}
+  return (
+    <>
+      <Slider scrollToAppointment={scrollToAppointment} />
 
-
-      {/* facts section start*/}
-        <Facts />
-      {/* facts section end */}
-
-
-      {/* features section start */}
-       <Features />
-      {/* features section end */}
-
-
-      {/* services section start */}
-        <Services />
-      {/* services section end */}
-
- 
-      {/* appointment section start */}
+      <About />
+     
+      <OurMission />
+      <HomeServices />
+       <Facts />
+      <Team />
+      <OurClients />
+      <Features />
+      <HSEQPolicy />
+      <Projects />
+      <div ref={appointmentRef}>
         <Appointment />
-      {/* appointment section end */}
+      </div>
 
-
-      {/* team section start */}
-        <Team />
-      {/* team section end */}
-
-
-      {/* testimonial section start */}
-        <Testimonial />
-      {/* testimonial section end */}
-          </>
-);
+      <Testimonial />
+    </>
+  );
 };
 
 export default Home;

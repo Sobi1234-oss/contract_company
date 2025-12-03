@@ -1,91 +1,175 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../../style_new.css';
+import "../../style_new.css";
+
 const Footer = () => {
   return (
-    
     <>
+      <div
+        className="container-fluid bg-dark footer mt-5 pt-4 wow fadeIn"
+        data-wow-delay="0.1s"
+        style={{ fontSize: "14px" }}
+      >
+        <div className="container py-4">
+          <div className="row g-4">
+            {/* Company Info */}
+            <div className="col-lg-3 col-md-6">
+              <h1 className="text-white mb-3" style={{ fontSize: "20px" }}>
+                <i className="fa fa-building text-primary me-2"></i>
+                Aber Al-Khayal General Contracting Company 
+              </h1>
 
-    <div class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn"
-        data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
-                <h1 class="text-white mb-4">
-                <i class="fa fa-building text-primary me-3"></i>APEX
-                </h1>
-                <p>
-                Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat
-                ipsum et lorem et sit, sed stet lorem sit clita
-                </p>
-                <div class="d-flex pt-2">
-                <a class="btn btn-square btn-outline-primary me-1" href="">
-                    <i class="fab fa-twitter"></i>
+              <p style={{ lineHeight: "1.4" }}>
+                We provide high-quality engineering and contracting solutions in
+                Electrical, Mechanical, and Civil sectors across Saudi Arabia.
+              </p>
+
+              <div className="d-flex pt-2">
+                <a
+                  className="btn btn-square btn-outline-primary me-1"
+                  href="javascript:void(0)"
+                >
+                  <i className="fab fa-twitter"></i>
                 </a>
-                <a class="btn btn-square btn-outline-primary me-1" href="">
-                    <i class="fab fa-facebook-f"></i>
+                <a
+                  className="btn btn-square btn-outline-primary me-1"
+                  href="javascript:void(0)"
+                >
+                  <i className="fab fa-facebook-f"></i>
                 </a>
-                <a class="btn btn-square btn-outline-primary me-1" href="">
-                    <i class="fab fa-youtube"></i>
+                <a
+                  className="btn btn-square btn-outline-primary me-1"
+                  href="javascript:void(0)"
+                >
+                  <i className="fab fa-youtube"></i>
                 </a>
-                <a class="btn btn-square btn-outline-primary me-0" href="">
-                    <i class="fab fa-linkedin-in"></i>
+                <a
+                  className="btn btn-square btn-outline-primary me-0"
+                  href="javascript:void(0)"
+                >
+                  <i className="fab fa-linkedin-in"></i>
                 </a>
-                </div>
+              </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-light mb-4">Address</h4>
-                <p>
-                <i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA
-                </p>
-                <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+
+            {/* Address */}
+            <div className="col-lg-3 col-md-6">
+              {/* Address Heading */}
+              <h4 className="text-light mb-2" style={{ fontSize: "16px" }}>
+                Address
+              </h4>
+              <p
+                className="footer-contact-item mb-2"
+                style={{ lineHeight: "1.4" }}
+              >
+                <i className="fa fa-map-marker-alt me-2"></i>
+                101 Business Tower, King Abdul Aziz Road, Aljubail 35513
+              </p>
+
+              {/* Contact Person Heading */}
+              <h4 className="text-light mb-2" style={{ fontSize: "16px" }}>
+                Company Representative
+              </h4>
+              <p
+                className="footer-contact-item mb-2"
+                style={{ lineHeight: "1.4" }}
+              >
+                <i className="fa fa-user me-2"></i>
+                Naveed Ashraf — Business Development Executive
+              </p>
+
+              {/* Phone Heading */}
+              <h4 className="text-light mb-2" style={{ fontSize: "16px" }}>
+                Phone
+              </h4>
+              <p
+                className="footer-contact-item mb-2"
+                style={{ lineHeight: "1.4" }}
+              >
+                <i className="fa fa-phone-alt me-2"></i>
+                +0554625112
+              </p>
+
+              {/* Email Heading */}
+              <h4 className="text-light mb-2" style={{ fontSize: "16px" }}>
+                Email
+              </h4>
+              <p
+                className="footer-contact-item mb-0"
+                style={{ lineHeight: "1.4" }}
+              >
+                <i className="fa fa-envelope me-2"></i>
+                aberalkhayal@gmail.com
+              </p>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-light mb-4">Quick Links</h4>
-                <Link to="/" class="btn btn-link">Home</Link>
-                <Link to="/about" class="btn btn-link">About</Link>
-                <Link to="/contact" class="btn btn-link">Contact Us</Link>
-                <Link to="/blogs" class="btn btn-link">Blogs</Link>
-                <Link to="/sign-up" class="btn btn-link">Sign Up</Link>
+
+            {/* Quick Links */}
+            <div className="col-lg-3 col-md-6">
+              <h4 className="text-light mb-3" style={{ fontSize: "18px" }}>
+                Quick Links
+              </h4>
+
+              <Link to="/" className="btn btn-link">
+                Home
+              </Link>
+              <Link to="/about-us" className="btn btn-link">
+                About Us
+              </Link>
+              <Link to="/our-services" className="btn btn-link">
+                Our Services
+              </Link>
+              <Link to="/our-team" className="btn btn-link">
+                Our Team
+              </Link>
+              <Link to="/clients-page" className="btn btn-link">
+                Our Clients
+              </Link>
+              <Link to="/contact-page" className="btn btn-link">
+                Contact
+              </Link>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-light mb-4">Newsletter</h4>
-                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                <div class="position-relative mx-auto" style={{maxWidth: '400px'}}>
+
+            {/* Newsletter */}
+            <div className="col-lg-3 col-md-6">
+              <h4 className="text-light mb-3" style={{ fontSize: "18px" }}>
+                Newsletter
+              </h4>
+              <p style={{ lineHeight: "1.4" }}>
+                Subscribe to receive company updates and project news.
+              </p>
+
+              <div
+                className="position-relative mx-auto"
+                style={{ maxWidth: "350px" }}
+              >
                 <input
-                    class="form-control bg-transparent w-100 py-3 ps-4 pe-5"
-                    type="text"
-                    placeholder="Your email"
+                  className="form-control bg-transparent w-100 py-2 ps-3 pe-5"
+                  type="text"
+                  placeholder="Your email"
+                  style={{ fontSize: "14px" }}
                 />
                 <button
-                    type="button"
-                    class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2"
+                  type="button"
+                  className="btn btn-primary py-1 position-absolute top-0 end-0 mt-1 me-2"
+                  style={{ fontSize: "13px" }}
                 >
-                    SignUp
+                  Subscribe
                 </button>
-                </div>
+              </div>
             </div>
-            </div>
-        </div>
-        <div class="container-fluid copyright">
-            <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy; <a href="#">Your Site Name</a>, All Right Reserved.
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                Designed By <a href="https://htmlcodex.com">Rayyan Hafeez</a>
-                <br />Distributed By:
-                <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                </div>
-            </div>
-            </div>
-        </div>
+          </div>
         </div>
 
+        {/* Copyright */}
+        <div className="container-fluid copyright py-2">
+          <div className="container text-center">
+            © {new Date().getFullYear()} Aber Al-Khayal General Contracting
+            Company — All Rights Reserved.
+          </div>
+        </div>
+      </div>
     </>
   );
 };
-  
+
 export default Footer;
