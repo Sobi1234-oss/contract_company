@@ -1,0 +1,1 @@
+On localhost the url must be :http://localhost:3000/js/contract_company/ 
