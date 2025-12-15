@@ -14,7 +14,7 @@ import OurTeam from './pages/our-team';
  //import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 return (
-	<Router basename="/js/contract_company/">
+	<Router>
 	<ScrollToTop /> 
 	
 	<Navbar />

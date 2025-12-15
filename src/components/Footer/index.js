@@ -73,20 +73,14 @@ const Footer = () => {
                 101 Business Tower, King Abdul Aziz Road, Aljubail 35513
               </p>
 
-              <h4 className="text-light mb-2" style={{ fontSize: "16px" }}>
-                Company Representative
-              </h4>
-              <p className="footer-contact-item mb-2" style={{ lineHeight: "1.4" }}>
-                <i className="fa fa-user me-2"></i>
-                Naveed Ashraf — Business Development Executive
-              </p>
+              
 
               <h4 className="text-light mb-2" style={{ fontSize: "16px" }}>
                 Phone
               </h4>
               <p className="footer-contact-item mb-2" style={{ lineHeight: "1.4" }}>
                 <i className="fa fa-phone-alt me-2"></i>
-                +0554625112
+                +0581741769
               </p>
 
               <h4 className="text-light mb-2" style={{ fontSize: "16px" }}>
@@ -94,7 +88,7 @@ const Footer = () => {
               </h4>
               <p className="footer-contact-item mb-0" style={{ lineHeight: "1.4" }}>
                 <i className="fa fa-envelope me-2"></i>
-                aberalkhayal@gmail.com
+                info@aberalkhayal.com
               </p>
             </div>
 
@@ -107,7 +101,7 @@ const Footer = () => {
               <Link to="/" className="btn btn-link">Home</Link>
               <Link to="/about-us" className="btn btn-link">About Us</Link>
               <Link to="/our-services" className="btn btn-link">Our Services</Link>
-              <Link to="/our-team" className="btn btn-link">Our Team</Link>
+             
               <Link to="/clients-page" className="btn btn-link">Our Clients</Link>
               <Link to="/contact-page" className="btn btn-link">Contact</Link>
             </div>

@@ -116,7 +116,7 @@ const Appointment = () => {
                 <h6 className="fw-bold text-dark mb-3">Quick Contact</h6>
                 <div className="d-flex align-items-center mb-2">
                   <i className="fa fa-phone text-primary me-3"></i>
-                  <span className="text-muted">+0554625112</span>
+                  <span className="text-muted">+0581741769</span>
                 </div>
                 <div className="d-flex align-items-center">
                   <i className="fa fa-envelope text-primary me-3"></i>

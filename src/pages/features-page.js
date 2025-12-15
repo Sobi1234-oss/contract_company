@@ -2,20 +2,21 @@ import React from 'react';
 import PageHeader from '../components/PageHeader';
 import Features from '../components/PageSections/features.js';
 import Testimonial from '../components/PageSections/testimonial.js';
-import Clients from '../components/PageSections/our_clients.js';;
+import Clients from '../components/PageSections/our_clients.js';
+import Fact from '../components/PageSections/facts.js';
 const FeaturesPage = () => {
 return (
 	  <>
       <PageHeader 
   name="Our Clients" 
   link="clients" 
-   bgImage={process.env.PUBLIC_URL + "/images/page-title-bg.jpg"}
+   bgImage={process.env.PUBLIC_URL + "/images/bg3.jpg"}
 />
 
       {/* features section start */}
         <Clients/>
       {/* features section end */}
-
+         <Fact/>
 
       {/* testimonial section start */}
         <Testimonial />

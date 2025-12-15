@@ -74,6 +74,7 @@ const About = () => {
                 </p>
 
                 {/* Updated Features Grid */}
+                <div className="about-features">
                 <div className="row g-3 mb-4" data-aos="fade-up" data-aos-delay="200">
                   <div className="col-md-6">
                     <div className="d-flex align-items-center p-3 bg-white rounded-3 shadow-sm border-start border-4 border-orange feature-item">
@@ -120,17 +121,21 @@ const About = () => {
                     </div>
                   </div>
                 </div>
+                </div>
 
                 {/* Updated Second Description */}
+                <div className="about-secondary">
                 <p className="text-muted mb-4" style={{ lineHeight: "1.6" }}>
                   With over 15 years of professional expertise, our dedicated team ensures precision 
                   engineering and timely project execution across residential, commercial, and industrial 
                   developments throughout Saudi Arabia.
                 </p>
+                </div>
 
                 {/* Updated Stats */}
-                <div className="stats-container p-4 bg-white rounded-4 shadow-sm border border-orange border-2" 
-                     data-aos="fade-up" data-aos-delay="300">
+                 <div className="about-stats">
+                 <div className="stats-container p-4 bg-white rounded-4 shadow-sm border border-orange border-2" 
+                   data-aos="fade-up" data-aos-delay="300">
                   <div className="row text-center g-0">
                     <div className="col-4">
                       <div className="stat-item">
@@ -152,6 +157,7 @@ const About = () => {
                     </div>
                   </div>
                 </div>
+                </div>
 
               </div>
             </div>
@@ -161,11 +167,17 @@ const About = () => {
               <div className="image-wrapper position-relative">
                 <div className="image-frame overflow-hidden rounded-4 shadow-lg">
                   <img
-                    src={process.env.PUBLIC_URL + "/images/about-2.jpg"}
-                    alt="Al-Khayal Engineering Services"
-                    className="img-fluid main-image rounded-4"
-                    style={{ height: "450px", objectFit: "cover" }}
-                  />
+  src={process.env.PUBLIC_URL + "/images/about.png"}
+  alt="Al-Khayal Engineering Services"
+  className="main-image"
+/>
+                </div>
+
+                {/* Mobile-only: show a short descriptive paragraph after the image */}
+                <div className="mobile-after-image">
+                  <p className="text-muted mb-3" style={{ lineHeight: "1.5" }}>
+                    <strong>Aber Al-Khayal General Contracting Company</strong> delivers cutting-edge Civil, Mechanical, and Electrical solutions with an emphasis on safety, quality and timely delivery across Saudi Arabia.
+                  </p>
                 </div>
 
                 {/* Floating Experience Badge - Updated to 15 years */}
@@ -263,18 +275,28 @@ const About = () => {
           }
 
           .image-frame {
-            transition: all 0.4s ease;
-            border: 8px solid white;
-          }
+  width: 100%;
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+
+.main-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 20px;
+}
+
 
           .image-frame:hover {
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
             transform: translateY(-5px);
           }
 
-          .main-image {
-            transition: all 0.5s ease;
-          }
+          
 
           .image-frame:hover .main-image {
             transform: scale(1.03);
@@ -391,6 +413,30 @@ const About = () => {
             }
           }
 
+          /* Mobile: show only heading/tagline then the image (hide extra blocks) */
+          @media (max-width: 767px) {
+            .about-features,
+            .about-stats,
+            .about-secondary {
+              display: none !important;
+            }
+
+            .mobile-after-image { display: block !important; }
+
+            .content-wrapper {
+              padding-right: 0 !important;
+            }
+
+            .image-wrapper {
+              margin-top: 12px;
+            }
+
+            .main-image {
+              height: 260px !important;
+              object-fit: cover !important;
+            }
+          }
+
           @media (max-width: 576px) {
             .stats-container .row {
               flex-direction: column;
@@ -405,6 +451,9 @@ const About = () => {
               height: 250px !important;
             }
           }
+
+          /* mobile-after-image hidden by default on larger screens */
+          .mobile-after-image { display: none; }
         `}</style>
 
       </section>

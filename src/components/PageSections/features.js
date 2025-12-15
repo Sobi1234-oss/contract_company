@@ -1,5 +1,4 @@
 import React from "react";
-import "../../style_new.css";
 
 const Features = () => {
   const featuresData = [
@@ -35,95 +34,128 @@ const Features = () => {
     }
   ];
 
+  // Shared inline styles
+  const containerStyle = {
+    width: "90%",
+    margin: "0 auto",
+  };
+
+  const sectionStyle = {
+    background: "linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%)",
+    fontFamily: "'Inter', sans-serif",
+    padding: "80px 0",
+    width: "90%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "30px",
+  };
+
+  const headerTitleStyle = {
+    fontSize: "3rem",
+    lineHeight: 1.2,
+    fontWeight: 700,
+    marginBottom: "1rem",
+    textTransform: "uppercase"
+  };
+
+  const taglineStyle = {
+    fontSize: "1.2rem",
+    maxWidth: "75%",
+    color: "#6c757d"
+  };
+
+  const featureBoxStyle = {
+    background: "#ffffff",
+    borderRadius: "1rem",
+    boxShadow: "0 12px 40px rgba(0,123,255,0.08)",
+    padding: "2rem",
+    textAlign: "center",
+    cursor: "pointer",
+    position: "relative",
+    overflow: "hidden",
+    transition: "all 0.4s ease",
+    marginBottom: "2rem"
+  };
+
+  const featureIconStyle = {
+    width: "80px",
+    height: "80px",
+    background: "linear-gradient(45deg, #007bff, #ff7f00)",
+    borderRadius: "50%",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: "15px",
+    position: "relative",
+    zIndex: 1,
+    transition: "all 0.3s ease"
+  };
+
+  const featureTitleStyle = {
+    fontWeight: 700,
+    marginBottom: "1rem",
+    fontSize: "1.25rem"
+  };
+
+  const featureDescStyle = {
+    color: "#6c757d",
+    lineHeight: 1.6,
+    fontSize: "1rem"
+  };
+
   return (
-    <section className="features-section py-5" style={{
-      background: "linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)",
-      paddingTop: "80px",
-      paddingBottom: "80px"
-    }}>
-      <div className="container">
-        {/* Left Aligned Header - Like Clients Section */}
-        <div className="row mb-5" data-aos="fade-up" style={{ marginTop: "30px" }}>
-          <div className="col-lg-8">
-            <div className="border-start border-5 border-primary ps-4">
-              <h6 className="text-body text-uppercase mb-2">Our Features</h6>
-              <h1 className="display-6 mb-0 fw-bold">Excellence by Aber Al-Khayal</h1>
-              <p className="text-muted mt-3">
-               We provide reliable, high-quality engineering solutions backed by expertise, innovation, and a commitment to excellence.
-              </p>
-            </div>
-          </div>
+    <section style={sectionStyle}>
+      <div style={containerStyle}>
+        {/* Header */}
+        <div style={{ marginBottom: "3rem" }}>
+          <h6
+  style={{
+    display: "inline-block", // ensures the width wraps the text
+    background: "rgba(255,255,255,0.9)",
+    color: "orange",
+    padding: "6px 16px",
+    borderRadius: "30px",
+    fontWeight: 700,
+    textTransform: "uppercase",
+    border: "1px solid orange",
+    letterSpacing: "1px",
+    marginBottom: "1rem", // spacing below the badge
+  }}
+>
+  Our Features
+</h6>
+
+          
+          {/* Heading split into two lines with blue & orange */}
+          <h1 style={headerTitleStyle}>
+            <span style={{ color: "#03468eff" }}>Excellence & Innovation</span><br />
+            <span style={{ color: "#ff7f00" }}>by Aber Al-Khayal</span>
+          </h1>
+
+          <p style={taglineStyle}>
+            We provide reliable, high-quality engineering solutions backed by expertise, innovation, and a commitment to excellence. Our mission is to deliver precision, safety, and sustainability in every project we undertake.
+          </p>
         </div>
 
-        {/* Features Grid - 3 per row */}
-        <div className="row g-4 justify-content-center">
+        {/* Features Grid */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem", justifyContent: "center" }}>
           {featuresData.map((feature, index) => (
-            <div key={index} className="col-xl-4 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay={index * 100}>
-              <div className="feature-box h-100 p-4 rounded-4 shadow-sm border-0">
-                <div className="feature-icon mb-3">
-                  <div className="icon-wrapper bg-primary bg-opacity-10 rounded-3 p-3 d-inline-flex align-items-center justify-content-center">
-                    <i className={`fas ${feature.icon} text-primary`} style={{ fontSize: "1.5rem" }}></i>
-                  </div>
+            <div key={index} style={{ flex: "0 0 30%", minWidth: "260px", transition: "all 0.3s ease" }}>
+              <div
+                style={featureBoxStyle}
+                onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-12px)"}
+                onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+              >
+                <div style={featureIconStyle}>
+                  <i className={`fas ${feature.icon} fa-2x`} style={{ color: "#fff" }}></i>
                 </div>
-                <h4 className="fw-bold text-dark mb-3">{feature.title}</h4>
-                <p className="text-muted mb-0" style={{ lineHeight: "1.6" }}>
-                  {feature.description}
-                </p>
+                <h4 style={featureTitleStyle}>{feature.title}</h4>
+                <p style={featureDescStyle}>{feature.description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      {/* Custom Styles */}
-      <style>{`
-        .features-section {
-          font-family: 'Inter', sans-serif;
-        }
-
-        /* Feature Boxes */
-        .feature-box {
-          background: #ffffff;
-          transition: all 0.3s ease;
-          border: 1px solid rgba(0, 0, 0, 0.05);cursor: pointer;
-        }
-
-        .feature-box:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
-          border-color: rgba(0, 123, 255, 0.2);
-        }
-
-        .icon-wrapper {
-          transition: all 0.3s ease;
-        }
-
-        .feature-box:hover .icon-wrapper {
-          background: linear-gradient(45deg, #007bff, #0056b3) !important;
-          transform: scale(1.05);
-        }
-
-        .feature-box:hover .icon-wrapper i {
-          color: white !important;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-          .feature-box {
-            margin-bottom: 1.5rem;
-          }
-          
-          .display-6 {
-            font-size: 2rem;
-          }
-        }
-
-        @media (max-width: 576px) {
-          .features-section {
-            padding: 60px 0 !important;
-          }
-        }
-      `}</style>
     </section>
   );
 };

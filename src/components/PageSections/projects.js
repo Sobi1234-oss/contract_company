@@ -42,74 +42,104 @@ const Projects = () => {
   return (
     <section id="projects" className="projects section py-5" style={{ 
       background: "linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)",
-      paddingTop: "80px",
-      paddingBottom: "80px"
+      paddingTop: "100px",
+      paddingBottom: "100px"
     }}>
       <div className="container">
-        {/* Left Aligned Heading - Like Features Section */}
+        {/* Left Aligned Heading - Big and Attractive */}
         <div className="row mb-5" data-aos="fade-up">
           <div className="col-lg-8">
-            <div className="border-start border-5 border-primary ps-4">
-              <h6 className="text-body text-uppercase mb-2">Our Projects</h6>
-              <h1 className="display-6 mb-0 fw-bold">Current Projects in Progress</h1>
-              <p className="text-muted mt-3">
+            <div style={{ borderLeft: "5px solid #ff9933", paddingLeft: "1.5rem" }}>
+              <h6 style={{ textTransform: "uppercase", color: "#0a2338", fontWeight: 700, marginBottom: "0.5rem" }}>
+                Our Projects
+              </h6>
+             <h1 style={{ 
+  fontSize: "3.5rem", 
+  fontWeight: 900, 
+  lineHeight: 1.2,
+  marginBottom: "1rem"
+}}>
+  <span style={{ color: "#0159b8ff" }}>Current Projects</span>{" "}
+  <span style={{ color: "#ff9933" }}>in Progress</span>
+</h1>
+
+              <p style={{ 
+                fontSize: "1.2rem", 
+                color: "#555", 
+                maxWidth: "650px",
+                lineHeight: 1.6
+              }}>
                 At <strong>Aber Al-Khayal General Contracting Company</strong>, we deliver high-quality projects 
-                across Civil, Electrical, and Mechanical disciplines, ensuring efficiency, sustainability, and client satisfaction.
+                across <span style={{ color: "#065fbeff" }}>Civil</span>, <span style={{ color: "#ff9933" }}>Electrical</span>, 
+                and <span style={{ color: "#055bb8ff" }}>Mechanical</span> disciplines, ensuring efficiency, sustainability, and client satisfaction.
               </p>
             </div>
           </div>
         </div>
 
+        {/* Project Cards */}
         <div className="row g-4 justify-content-center">
           {projectsData.map((project, i) => (
             <div key={i} className="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay={project.delay}>
-              <div className="project-card position-relative rounded-4 overflow-hidden shadow-sm">
-                <div className="project-image-wrapper">
+              <div style={{
+                cursor: "pointer",
+                transition: "all 0.4s ease",
+                border: "1px solid rgba(0, 0, 0, 0.05)",
+                borderRadius: "15px",
+                overflow: "hidden",
+                boxShadow: "0 8px 25px rgba(0,0,0,0.1)"
+              }}
+                className="project-card"
+              >
+                <div style={{ position: "relative", overflow: "hidden", height: "280px" }} className="project-image-wrapper">
                   <img
                     src={project.img}
                     alt={project.title}
-                    className="img-fluid project-img"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      transition: "transform 0.4s ease"
+                    }}
+                    className="project-img"
                   />
-                  <div className="project-badge position-absolute top-0 start-0 m-3">
-                    <span className="badge bg-primary bg-opacity-90 text-white px-3 py-2 rounded-pill">
-                      {project.category}
-                    </span>
+                  <div style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 2 }}>
+                    <span style={{
+                      backgroundColor: "rgba(5, 84, 168, 0.85)",
+                      color: "#fff",
+                      padding: "0.4rem 0.8rem",
+                      borderRadius: "50px",
+                      fontSize: "0.85rem",
+                      fontWeight: 600
+                    }}>{project.category}</span>
                   </div>
                 </div>
-                
-                <div className="project-content p-4 bg-white">
-                  <h5 className="project-title fw-bold text-dark mb-2">{project.title}</h5>
-                  <p className="project-text text-muted mb-3">{project.text}</p>
+                <div style={{ padding: "1.5rem", backgroundColor: "#fff" }} className="project-content">
+                  <h5 style={{ fontWeight: 700, fontSize: "1.4rem", marginBottom: "0.5rem" }}>{project.title}</h5>
+                  <p style={{ color: "#555", fontSize: "0.95rem", lineHeight: 1.6 }}>{project.text}</p>
                   
-                  <div className="project-features">
-                    <div className="d-flex align-items-center text-primary mb-2">
+                  <div style={{ borderTop: "1px solid rgba(0,0,0,0.1)", borderBottom: "1px solid rgba(0,0,0,0.1)", padding: "0.8rem 0", marginBottom: "0.5rem" }} className="project-features">
+                    <div style={{ display: "flex", alignItems: "center", color: "#007bff", marginBottom: "0.3rem" }}>
                       <i className="fa fa-hard-hat me-2 small"></i>
-                      <small className="fw-medium">Civil Works</small>
+                      <small>Civil Works</small>
                     </div>
-                    <div className="d-flex align-items-center text-primary mb-2">
+                    <div style={{ display: "flex", alignItems: "center", color: "#ff9933", marginBottom: "0.3rem" }}>
                       <i className="fa fa-bolt me-2 small"></i>
-                      <small className="fw-medium">Electrical Systems</small>
+                      <small>Electrical Systems</small>
                     </div>
-                    <div className="d-flex align-items-center text-primary">
+                    <div style={{ display: "flex", alignItems: "center", color: "#007bff" }}>
                       <i className="fa fa-cogs me-2 small"></i>
-                      <small className="fw-medium">Mechanical Installations</small>
+                      <small>Mechanical Installations</small>
                     </div>
                   </div>
-                  
-                  <div className="project-progress mt-3">
-                    <div className="d-flex justify-content-between align-items-center mb-2">
-                      <small className="text-muted fw-medium">Project Progress</small>
-                      <small className="text-primary fw-bold">65%</small>
+
+                  <div className="project-progress">
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.3rem" }}>
+                      <small style={{ color: "#888" }}>Project Progress</small>
+                      <small style={{ color: "#007bff", fontWeight: 600 }}>65%</small>
                     </div>
-                    <div className="progress" style={{ height: "6px", borderRadius: "10px" }}>
-                      <div 
-                        className="progress-bar bg-primary" 
-                        role="progressbar" 
-                        style={{ width: "65%" }}
-                        aria-valuenow="65" 
-                        aria-valuemin="0" 
-                        aria-valuemax="100"
-                      ></div>
+                    <div style={{ height: "6px", borderRadius: "10px", backgroundColor: "#e9ecef" }}>
+                      <div style={{ width: "65%", height: "100%", borderRadius: "10px", backgroundColor: "#007bff", transition: "width 2s ease-in-out" }}></div>
                     </div>
                   </div>
                 </div>
@@ -118,91 +148,7 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* View More Button */}
-        <div className="row mt-5" data-aos="fade-up" data-aos-delay="500">
-          
-        </div>
       </div>
-
-      {/* Custom Styles */}
-      <style jsx>{`
-        .project-card {
-          cursor: pointer;
-          transition: all 0.4s ease;
-          border: 1px solid rgba(0, 0, 0, 0.05);od 
-        }
-
-        .project-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        .project-image-wrapper {
-          position: relative;
-          overflow: hidden;
-          height: 250px;
-        }
-
-        .project-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.4s ease;
-        }
-
-        .project-card:hover .project-img {
-          transform: scale(1.1);
-        }
-
-        .project-badge {
-          z-index: 2;
-        }
-
-        .project-content {
-          transition: all 0.3s ease;
-        }
-
-        .project-title {
-          font-size: 1.3rem;
-          line-height: 1.4;
-        }
-
-        .project-text {
-          line-height: 1.6;
-          font-size: 0.95rem;
-        }
-
-        .project-features {
-          border-top: 1px solid rgba(0, 0, 0, 0.1);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-          padding: 1rem 0;
-        }
-
-        .progress-bar {
-          transition: width 2s ease-in-out;
-        }
-
-        .btn-outline-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
-        }
-
-        @media (max-width: 768px) {
-          .project-image-wrapper {
-            height: 200px;
-          }
-          
-          .display-6 {
-            font-size: 2rem;
-          }
-        }
-
-        @media (max-width: 576px) {
-          .project-card {
-            margin-bottom: 2rem;
-          }
-        }
-      `}</style>
     </section>
   );
 };

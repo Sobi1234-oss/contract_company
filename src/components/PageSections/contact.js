@@ -109,7 +109,7 @@ const Contact = () => {
             <div className="info-card text-center p-4 shadow-sm rounded-4 bg-white h-100">
               <i className="bi bi-telephone" style={{ fontSize: "2.5rem", color: "#FF6F00" }}></i>
               <h4 className="mt-3 mb-2">Call Us</h4>
-              <p>+0554625112</p>
+              <p>+0581741769</p>
             </div>
           </div>
 
@@ -117,8 +117,13 @@ const Contact = () => {
             <div className="info-card text-center p-4 shadow-sm rounded-4 bg-white h-100">
               <i className="bi bi-envelope" style={{ fontSize: "2.5rem", color: "#FF6F00" }}></i>
               <h4 className="mt-3 mb-2">Email Us</h4>
-              <p>aberalkhayal@gmail.com</p>
+
+              <p className="mb-1">info@aberalkhayal.com</p>
+              <p className="mb-1">sales@aberalkhayal.com</p>
+              <p className="mb-1">projects@aberalkhayal.com</p>
+              <p className="mb-0">estimation@aberalkhayal.com</p>
             </div>
+
           </div>
         </div>
 

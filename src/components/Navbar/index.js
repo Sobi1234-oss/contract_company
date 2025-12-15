@@ -41,7 +41,7 @@ const Navbar = () => {
         <NavLink to="/about-us" className="custom-link" onClick={closeMenu}>About</NavLink>
         <NavLink to="/our-services" className="custom-link" onClick={closeMenu}>Services</NavLink>
         <NavLink to="/clients-page" className="custom-link" onClick={closeMenu}>Our Clients</NavLink>
-        <NavLink to="/our-team" className="custom-link" onClick={closeMenu}>Our Team</NavLink>
+       
         <NavLink to="/contact-page" className="custom-link" onClick={closeMenu}>Contact</NavLink>
       </div>
     </nav>
